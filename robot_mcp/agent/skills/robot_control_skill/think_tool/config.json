@@ -1,0 +1,25 @@
+{
+  "type": "completion",
+  "description": "Calculates a route to a destination based on the current location.",
+  "completion": {
+    "max_tokens": 512,
+    "temperature": 0.0,
+    "top_p": 0.0,
+    "presence_penalty": 0.0,
+    "frequency_penalty": 0.0
+  },
+  "input": {
+    "parameters": [
+      {
+        "name": "destination",
+        "description": "The target destination.",
+        "defaultValue": ""
+      },
+      {
+        "name": "origin",
+        "description": "The current location of the robot.",
+        "defaultValue": ""
+      }
+    ]
+  }
+}
