@@ -57,13 +57,31 @@ robot_mcp/
 
 ## Running the Sample
 
-To run the sample, execute the `main.py` script from the `robot_mcp` directory:
+There are two main ways to run this sample:
 
-```bash
-python main.py
-```
+1.  **From the directory *containing* `robot_mcp` (Recommended):**
+    If your project is structured like `/path/to/your_workspace/robot_mcp/`, navigate to `/path/to/your_workspace/`:
+    ```bash
+    cd /path/to/your_workspace/ 
+    python -m robot_mcp.main
+    ```
+    Using `python -m robot_mcp.main` is the most robust way to run Python modules that are part of a package. It tells Python to load the module `main` from the `robot_mcp` package.
+
+2.  **From *within* the `robot_mcp` directory:**
+    Navigate into the `robot_mcp` directory:
+    ```bash
+    cd /path/to/your_workspace/robot_mcp/
+    python main.py
+    ```
+    The `main.py` script includes logic to adjust `sys.path` so that the `robot_mcp` package is found. This method should also work.
 
 You should see output from the client and agent, simulating the Sense-Think-Act loop as the robot attempts to reach "Waypoint A".
+
+### Understanding Python Imports
+
+The `ModuleNotFoundError` can occur if Python doesn't know where to find the `robot_mcp` package.
+- When you run `python -m robot_mcp.main` from the parent directory, Python adds the current directory (e.g., `/path/to/your_workspace/`) to its `sys.path`. It can then find the `robot_mcp` package within that directory.
+- When you run `python main.py` from within the `robot_mcp` directory, the script itself now adds its parent directory (e.g., `/path/to/your_workspace/`) to `sys.path` to achieve a similar effect, allowing `from robot_mcp...` imports to resolve correctly.
 
 ## Notes on Mock Behavior
 

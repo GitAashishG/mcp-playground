@@ -5,10 +5,6 @@ import asyncio
 # if main.py handles the package context correctly.
 import sys
 import os
-# Add project root to sys.path to allow imports from agent
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
 
 from robot_mcp.agent.robot_agent import RobotAgent # Ensure this import works
 

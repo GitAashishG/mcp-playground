@@ -10,6 +10,18 @@ import sys # Import sys
 
 import os # Required for os.path.abspath and os.path.dirname if those lines were active
 
+# Ensure the parent directory of 'robot_mcp' is on sys.path
+# so that 'robot_mcp' can be imported as a package.
+# This script (main.py) is inside 'robot_mcp'.
+# So, its parent directory is the one containing 'robot_mcp'.
+current_dir = os.path.dirname(os.path.abspath(__file__)) # This is /path/to/robot_mcp
+parent_dir = os.path.dirname(current_dir) # This is /path/to
+
+# Add parent_dir to sys.path if it's not already there
+# This allows Python to find the 'robot_mcp' package
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
+
 # Ensure the robot_mcp package is discoverable if main.py is in the root
 # This is usually handled by Python if the package structure is correct
 # and you run python -m robot_mcp.main or similar,
